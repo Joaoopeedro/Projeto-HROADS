@@ -38,6 +38,7 @@ NomeClasse VARCHAR (20) NOT NULL
 GO
 
 CREATE TABLE Classe_Habilidade (
+IdClasseHabilidade SMALLINT PRIMARY KEY IDENTITY(1,1),
 IdClasse TINYINT FOREIGN KEY REFERENCES Classe(idClasse),
 IdHabilidade TINYINT FOREIGN KEY REFERENCES Habilidade(idHabilidade)
 );
