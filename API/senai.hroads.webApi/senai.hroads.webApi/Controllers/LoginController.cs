@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using senai.hroads.webApi.Domains;
 using senai.hroads.webApi.Interfaces;
+using senai.hroads.webApi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,17 +13,21 @@ using System.Threading.Tasks;
 
 namespace senai.hroads.webApi.Controllers
 {
-    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
+        public LoginController()
+        {
+            _usuarioRepository = new UsuarioRepository();
+        }
+
         [HttpPost("login")]
         public IActionResult Login(Usuario login)
         {
-            Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, login.Senha);
+            Usuario usuarioBuscado = _usuarioRepository.Login(login.Senha, login.Email);
 
             if (usuarioBuscado == null)
             {
@@ -33,7 +38,7 @@ namespace senai.hroads.webApi.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.Senha),
-                new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation.Titulo),
+                new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString())
             };
 
             var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("senai_HROADS_webAPI.securitykey"));

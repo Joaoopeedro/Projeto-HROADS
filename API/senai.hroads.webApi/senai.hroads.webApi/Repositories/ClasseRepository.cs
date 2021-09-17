@@ -11,7 +11,7 @@ namespace senai.hroads.webApi.Repositories
     public class ClasseRepository : IClasseRepository
     {
         HroadsContext ctx = new HroadsContext();
-        public void Atualizar(int id, Classe classeAtualizada)
+        public void Atualizar(byte id, Classe classeAtualizada)
         {
             Classe classeBuscada = ctx.Classes.Find(id);
 
@@ -37,7 +37,7 @@ namespace senai.hroads.webApi.Repositories
             ctx.SaveChanges();
         }
 
-        public void Deletar(int id)
+        public void Deletar(byte id)
         {
             ctx.Classes.Remove(BuscarPorId(id));
 

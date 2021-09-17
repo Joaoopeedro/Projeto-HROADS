@@ -12,6 +12,6 @@ namespace senai.hroads.webApi.Interfaces
         Classe BuscarPorId(int id);
         void Cadastrar(Classe novaClasse);
         void Deletar(int id);
-        void Atualizar(int id, Classe classeAtualizada);
+        void Atualizar(short id, Classe classeAtualizada);
     }
 }

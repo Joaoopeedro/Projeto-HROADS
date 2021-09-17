@@ -13,6 +13,6 @@ namespace senai.hroads.webApi.Interfaces
         void Cadastrar(Usuario novoUsuario);
         void Deletar(int id);
         void Atualizar(int id, Usuario usuarioAtualizado);
-        Usuario Login(string email, string senha);
+        Usuario Login(string senha, string email);
     }
 }

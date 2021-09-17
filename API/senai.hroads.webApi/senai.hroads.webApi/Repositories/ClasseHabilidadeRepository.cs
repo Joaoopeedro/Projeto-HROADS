@@ -12,7 +12,7 @@ namespace senai.hroads.webApi.Repositories
     public class ClasseHabilidadeRepository : IClasseHabilidadeRepository
     {
         HroadsContext ctx = new HroadsContext();
-        public void Atualizar(int id, ClasseHabilidade classeHabilidadeAtualizada)
+        public void Atualizar(short id, ClasseHabilidade classeHabilidadeAtualizada)
         {
             ClasseHabilidade classeHabilidadeBuscada = ctx.ClasseHabilidades.Find(id);
 
@@ -25,6 +25,11 @@ namespace senai.hroads.webApi.Repositories
 
                 ctx.SaveChanges();
             }
+        }
+
+        public void Atualizar(byte id, ClasseHabilidade classeHabilidadeAtualizada)
+        {
+            throw new NotImplementedException();
         }
 
         public ClasseHabilidade BuscarPorId(int id)
@@ -44,6 +49,16 @@ namespace senai.hroads.webApi.Repositories
             ctx.ClasseHabilidades.Remove(BuscarPorId(id));
 
             ctx.SaveChanges();
+        }
+
+        public void Deletar(byte id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Deletar(short id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<ClasseHabilidade> Listar()
