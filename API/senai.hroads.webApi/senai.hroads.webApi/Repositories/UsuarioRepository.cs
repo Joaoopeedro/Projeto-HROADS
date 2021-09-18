@@ -1,4 +1,5 @@
-﻿using senai.hroads.webApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.hroads.webApi.Contexts;
 using senai.hroads.webApi.Domains;
 using senai.hroads.webApi.Interfaces;
 using System;
@@ -49,9 +50,15 @@ namespace senai.hroads.webApi.Repositories
             return ctx.Usuarios.ToList();
         }
 
+        public List<Usuario> ListarComTipo()
+        {
+            return ctx.Usuarios.Include(u => u.IdTipoUsuarioNavigation).ToList();
+        }
+
         public Usuario Login(string senha, string email)
         {
             return ctx.Usuarios.FirstOrDefault(u => u.Senha == senha || u.Email == email);
         }
+
     }
 }

@@ -13,6 +13,6 @@ namespace senai.hroads.webApi.Interfaces
         void Cadastrar(Personagem novaPersonagem);
         void Deletar(int id);
         void Atualizar(int id, Personagem personagemAtualizado);
-        List<Personagem> ListarComHabilidade();
+        List<Personagem> ListarComClasse();
     }
 }

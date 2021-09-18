@@ -27,6 +27,11 @@ namespace senai.hroads.webApi.Repositories
             }
         }
 
+        public void Atualizar(byte id, Habilidade habilidadeAtualizada)
+        {
+            throw new NotImplementedException();
+        }
+
         public Habilidade BuscarPorId(int id)
         {
             return ctx.Habilidades.FirstOrDefault(h => h.IdHabilidade == id);
@@ -44,6 +49,11 @@ namespace senai.hroads.webApi.Repositories
             ctx.Habilidades.Remove(BuscarPorId(id));
 
             ctx.SaveChanges();
+        }
+
+        public void Deletar(byte id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Habilidade> Listar()

@@ -1,4 +1,5 @@
-﻿using senai.hroads.webApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.hroads.webApi.Contexts;
 using senai.hroads.webApi.Domains;
 using senai.hroads.webApi.Interfaces;
 using System;
@@ -54,9 +55,9 @@ namespace senai.hroads.webApi.Repositories
             return ctx.Personagems.ToList();
         }
 
-        public List<Personagem> ListarComHabilidade()
+        public List<Personagem> ListarComClasse()
         {
-            throw new NotImplementedException();
+            return ctx.Personagems.Include(p => p.IdClasseNavigation).ToList();
         }
     }
 }

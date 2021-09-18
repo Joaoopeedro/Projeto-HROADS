@@ -14,5 +14,6 @@ namespace senai.hroads.webApi.Interfaces
         void Deletar(int id);
         void Atualizar(int id, Usuario usuarioAtualizado);
         Usuario Login(string senha, string email);
+        List<Usuario> ListarComTipo();
     }
 }
